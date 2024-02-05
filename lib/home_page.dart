@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slicing_ui_kmn_01/login_page.dart';
 import 'package:slicing_ui_kmn_01/testimonial_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,7 +15,11 @@ class HomePage extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  print('Login tapped');
+                  // print('Login tapped');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 },
                 child: const Text(
                   'Login',

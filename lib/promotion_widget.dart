@@ -37,7 +37,7 @@ class PromotionCard extends StatelessWidget {
             top: 20,
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class PromotionCard extends StatelessWidget {
             bottom: 50,
             child: Text(
               promoPrice,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class PromotionCard extends StatelessWidget {
             bottom: 20,
             child: Text(
               'Hanya untuk $limit pendaftar pertama!',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
               ),
