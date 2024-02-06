@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:slicing_ui_kmn_01/home_page.dart';
 
 // voidi main() => runApp(MyApp());
 
@@ -37,6 +38,13 @@ class _EmailLoginState extends State<EmailLogin> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Login successed!"),
       ));
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Failed to login!"),
