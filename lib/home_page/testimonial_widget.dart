@@ -7,11 +7,11 @@ class TestimonialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
+        const Padding(
+          padding: EdgeInsets.only(right: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const <Widget>[
+            children: <Widget>[
               Text(
                 'Testimonals',
                 style: TextStyle(

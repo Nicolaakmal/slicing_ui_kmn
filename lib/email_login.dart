@@ -1,7 +1,10 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
-import 'package:slicing_ui_kmn_01/home_page.dart';
+// import 'package:slicing_ui_kmn_01/cubits/cubit/login_cubit.dart';
+import 'package:slicing_ui_kmn_01/home_page/home_screen.dart';
 
 // voidi main() => runApp(MyApp());
 
@@ -16,6 +19,10 @@ import 'package:slicing_ui_kmn_01/home_page.dart';
 // }
 
 class EmailLogin extends StatefulWidget {
+  const EmailLogin({super.key});
+
+  // const EmailLogin({super.key});
+
   @override
   _EmailLoginState createState() => _EmailLoginState();
 }
@@ -31,18 +38,18 @@ class _EmailLoginState extends State<EmailLogin> {
         body: jsonEncode({
           "email": emailController.text,
           "password": passwordController.text,
-          // "userId": 1,
+          "userId": 1,
         }));
 
     if (response.statusCode == 200) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Login successed!"),
+        content: Text("Login successed"),
       ));
 
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => const HomeScreen(),
         ),
       );
     } else {
@@ -56,23 +63,40 @@ class _EmailLoginState extends State<EmailLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Email Login'),
+        title: const Text('Email Login'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          // key: context.read<LoginCubit>().formKey,
           children: <Widget>[
-            TextField(
+            TextFormField(
+              // controller: context.read<LoginCubit>().emailController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Your Email';
+                }
+                return null;
+              },
               controller: emailController,
-              decoration: InputDecoration(hintText: "email"),
+              decoration: const InputDecoration(hintText: "email"),
             ),
-            TextField(
+            TextFormField(
+              // controller: context.read<LoginCubit>().passwordController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Your Password';
+                }
+                return null;
+              },
               controller: passwordController,
-              decoration: InputDecoration(hintText: "password"),
+              decoration: const InputDecoration(hintText: "password"),
             ),
             ElevatedButton(
-              onPressed: sendPostRequest,
-              child: Text("Login Successed"),
+              onPressed: () {
+                // context.read<LoginCubit>().formKey.currentState!.validate();
+              },
+              child: const Text("Login"),
             ),
           ],
         ),
