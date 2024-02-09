@@ -47,3 +47,4 @@ class ActivityScreen extends StatelessWidget {
     );
   }
 }
+

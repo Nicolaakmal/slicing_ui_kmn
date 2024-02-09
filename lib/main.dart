@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slicing_ui_kmn_01/activity/activity_screen.dart';
+import 'package:slicing_ui_kmn_01/family/family_screen.dart';
 import 'package:slicing_ui_kmn_01/home_page/home_screen.dart';
 import 'package:slicing_ui_kmn_01/log/cubit/log_api_cubit.dart';
 import 'package:slicing_ui_kmn_01/log/cubit/log_switch_cubit.dart';
 import 'package:slicing_ui_kmn_01/log/widget/log_page.dart';
 import 'auth_bloc.dart';
-import 'custom_bottom_nav_bar.dart'; // Import custom bottom nav bar
+import 'custom_bottom_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -233,16 +234,16 @@ class _MyAppState extends State<MyApp> {
 //   }
 // }
 
-class FamilyScreen extends StatelessWidget {
-  const FamilyScreen({super.key});
+// class FamilyScreen extends StatelessWidget {
+//   const FamilyScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Family Screen'),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Center(
+//       child: Text('Family Screen'),
+//     );
+//   }
+// }
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
