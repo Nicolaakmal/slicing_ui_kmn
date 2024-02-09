@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slicing_ui_kmn_01/home_page/home_screen.dart';
+import 'package:slicing_ui_kmn_01/log/cubit/log_api_cubit.dart';
+import 'package:slicing_ui_kmn_01/log/cubit/log_switch_cubit.dart';
+import 'package:slicing_ui_kmn_01/log/widget/log_page.dart';
 // import 'package:slicing_ui_kmn_01/login_page.dart';
 
 void main() {
@@ -38,6 +42,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       routes: {
+        '/login': (context) => const LogPage(),
         '/home': (context) => const HomeScreen(),
         '/activity': (context) => const ActivityScreen(),
         '/family': (context) => const FamilyScreen(),
@@ -45,35 +50,52 @@ class _MyAppState extends State<MyApp> {
       },
       debugShowCheckedModeBanner: false,
       // home: const HomeScreen(),
-      home: Scaffold(
-        // appBar: AppBar(
-        //   title: Text('Bottom Navigation Bar Example'),
-        // ),
-        body: _widgetOptions.elementAt(_selectedIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.library_books_outlined),
-              label: 'Activity',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.family_restroom_outlined),
-              label: 'My Family',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue,
-          onTap: _onItemTapped,
-        ),
+      // home: Scaffold(
+      // appBar: AppBar(
+      //   title: Text('Bottom Navigation Bar Example'),
+      // ),
+      //   body: _widgetOptions.elementAt(_selectedIndex),
+      //   bottomNavigationBar: BottomNavigationBar(
+      //     type: BottomNavigationBarType.fixed,
+      //     items: const <BottomNavigationBarItem>[
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.home),
+      //         label: 'Home',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.library_books_outlined),
+      //         label: 'Activity',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.family_restroom_outlined),
+      //         label: 'My Family',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.person),
+      //         label: 'Profile',
+      //       ),
+      //     ],
+      //     currentIndex: _selectedIndex,
+      //     selectedItemColor: Colors.blue,
+      //     onTap: _onItemTapped,
+      //   ),
+      // ),
+
+      // home: MultiBlocProvider(
+      //   providers: [
+      //     BlocProvider(
+      //       create: (context) => LogAPICubit(),
+      //     ),
+      //     BlocProvider(
+      //       create: (context) => LogSwitchCubit(),
+      //     ),
+      //   ],
+      //   child: HomeScreen(),
+      // ),
+
+      home: BlocProvider(
+        create: (context) => LogAPICubit(),
+        child: HomeScreen(),
       ),
     );
   }

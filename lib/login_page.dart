@@ -1,6 +1,7 @@
 // login_page.dart
 import 'package:flutter/material.dart';
-import 'package:slicing_ui_kmn_01/email_login.dart';
+// import 'package:slicing_ui_kmn_01/email_login.dart';
+import 'package:slicing_ui_kmn_01/log/widget/log_page.dart';
 // import 'cubits/cubit/login_cubit.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const EmailLogin(),
+                          builder: (context) => const LogPage(), // Changed EmailLogin() to LogPage()
                         ),
                       );
 

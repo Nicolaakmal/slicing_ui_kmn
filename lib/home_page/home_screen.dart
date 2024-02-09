@@ -7,7 +7,9 @@ import 'package:slicing_ui_kmn_01/home_page/testimonial_widget.dart';
 // import 'package:slicing_ui_kmn_01/app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  // const HomeScreen({super.key}); // before
+  const HomeScreen({Key? key}) : super(key: key); //after
+
 
   @override
   Widget build(BuildContext context) {
