@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slicing_ui_kmn_01/activity/activity_screen.dart';
 import 'package:slicing_ui_kmn_01/home_page/home_screen.dart';
 import 'package:slicing_ui_kmn_01/log/cubit/log_api_cubit.dart';
 import 'package:slicing_ui_kmn_01/log/cubit/log_switch_cubit.dart';
 import 'package:slicing_ui_kmn_01/log/widget/log_page.dart';
-// import 'package:slicing_ui_kmn_01/login_page.dart';
+import 'auth_bloc.dart';
+import 'custom_bottom_nav_bar.dart'; // Import custom bottom nav bar
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -49,68 +51,187 @@ class _MyAppState extends State<MyApp> {
         '/profile': (context) => const ProfileScreen(),
       },
       debugShowCheckedModeBanner: false,
-      // home: const HomeScreen(),
-      // home: Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Bottom Navigation Bar Example'),
-      // ),
-      //   body: _widgetOptions.elementAt(_selectedIndex),
-      //   bottomNavigationBar: BottomNavigationBar(
-      //     type: BottomNavigationBarType.fixed,
-      //     items: const <BottomNavigationBarItem>[
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.home),
-      //         label: 'Home',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.library_books_outlined),
-      //         label: 'Activity',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.family_restroom_outlined),
-      //         label: 'My Family',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.person),
-      //         label: 'Profile',
-      //       ),
-      //     ],
-      //     currentIndex: _selectedIndex,
-      //     selectedItemColor: Colors.blue,
-      //     onTap: _onItemTapped,
-      //   ),
-      // ),
-
-      // home: MultiBlocProvider(
-      //   providers: [
-      //     BlocProvider(
-      //       create: (context) => LogAPICubit(),
-      //     ),
-      //     BlocProvider(
-      //       create: (context) => LogSwitchCubit(),
-      //     ),
-      //   ],
-      //   child: HomeScreen(),
-      // ),
-
-      home: BlocProvider(
-        create: (context) => LogAPICubit(),
-        child: HomeScreen(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => LogAPICubit(),
+          ),
+          BlocProvider(
+            create: (context) => LogSwitchCubit(),
+          ),
+          BlocProvider(
+            create: (context) =>
+                AuthenticationBloc(), // Inisialisasi AuthenticationBloc
+          ),
+        ],
+        child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: _widgetOptions.elementAt(_selectedIndex),
+              bottomNavigationBar: CustomBottomNavBar(
+                // Gunakan custom bottom nav bar
+                selectedIndex: _selectedIndex,
+                onItemTapped: _onItemTapped,
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
-class ActivityScreen extends StatelessWidget {
-  const ActivityScreen({super.key});
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:slicing_ui_kmn_01/home_page/home_screen.dart';
+// import 'package:slicing_ui_kmn_01/log/cubit/log_api_cubit.dart';
+// import 'package:slicing_ui_kmn_01/log/cubit/log_switch_cubit.dart';
+// import 'package:slicing_ui_kmn_01/log/widget/log_page.dart';
+// // import 'package:slicing_ui_kmn_01/login_page.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Activity Screen'),
-    );
-  }
-}
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatefulWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   int _selectedIndex = 0;
+
+//   static final List<Widget> _widgetOptions = <Widget>[
+//     const HomeScreen(),
+//     const ActivityScreen(),
+//     const FamilyScreen(),
+//     const ProfileScreen(),
+//   ];
+
+//   void _onItemTapped(int index) {
+//     setState(() {
+//       _selectedIndex = index;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+//         useMaterial3: true,
+//       ),
+//       routes: {
+//         '/login': (context) => const LogPage(),
+//         '/home': (context) => const HomeScreen(),
+//         '/activity': (context) => const ActivityScreen(),
+//         '/family': (context) => const FamilyScreen(),
+//         '/profile': (context) => const ProfileScreen(),
+//       },
+//       debugShowCheckedModeBanner: false,
+//       // home: const HomeScreen(),
+//       // home: Scaffold(
+//       // appBar: AppBar(
+//       //   title: Text('Bottom Navigation Bar Example'),
+//       // ),
+//       //   body: _widgetOptions.elementAt(_selectedIndex),
+//       //   bottomNavigationBar: BottomNavigationBar(
+//       //     type: BottomNavigationBarType.fixed,
+//       //     items: const <BottomNavigationBarItem>[
+//       //       BottomNavigationBarItem(
+//       //         icon: Icon(Icons.home),
+//       //         label: 'Home',
+//       //       ),
+//       //       BottomNavigationBarItem(
+//       //         icon: Icon(Icons.library_books_outlined),
+//       //         label: 'Activity',
+//       //       ),
+//       //       BottomNavigationBarItem(
+//       //         icon: Icon(Icons.family_restroom_outlined),
+//       //         label: 'My Family',
+//       //       ),
+//       //       BottomNavigationBarItem(
+//       //         icon: Icon(Icons.person),
+//       //         label: 'Profile',
+//       //       ),
+//       //     ],
+//       //     currentIndex: _selectedIndex,
+//       //     selectedItemColor: Colors.blue,
+//       //     onTap: _onItemTapped,
+//       //   ),
+//       // ),
+
+//       // home: MultiBlocProvider(
+//       //   providers: [
+//       //     BlocProvider(
+//       //       create: (context) => LogAPICubit(),
+//       //     ),
+//       //     BlocProvider(
+//       //       create: (context) => LogSwitchCubit(),
+//       //     ),
+//       //   ],
+//       //   child: HomeScreen(),
+//       // ),
+
+//       // home: BlocProvider(
+//       //   create: (context) => LogAPICubit(),
+//       //   child: HomeScreen(),
+//       // ),
+
+//       home: MultiBlocProvider(
+//         providers: [
+//           BlocProvider(
+//             create: (context) => LogAPICubit(),
+//           ),
+//           BlocProvider(
+//             create: (context) => LogSwitchCubit(),
+//           ),
+//         ],
+//         child: Scaffold(
+//           body: _widgetOptions.elementAt(_selectedIndex),
+//           bottomNavigationBar: BottomNavigationBar(
+//             type: BottomNavigationBarType.fixed,
+//             items: const <BottomNavigationBarItem>[
+//               BottomNavigationBarItem(
+//                 icon: Icon(Icons.home),
+//                 label: 'Home',
+//               ),
+//               BottomNavigationBarItem(
+//                 icon: Icon(Icons.library_books_outlined),
+//                 label: 'Activity',
+//               ),
+//               BottomNavigationBarItem(
+//                 icon: Icon(Icons.family_restroom_outlined),
+//                 label: 'My Family',
+//               ),
+//               BottomNavigationBarItem(
+//                 icon: Icon(Icons.person),
+//                 label: 'Profile',
+//               ),
+//             ],
+//             currentIndex: _selectedIndex,
+//             selectedItemColor: Colors.blue,
+//             onTap: _onItemTapped,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class ActivityScreen extends StatelessWidget {
+//   const ActivityScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Center(
+//       child: Text('Activity Screen'),
+//     );
+//   }
+// }
 
 class FamilyScreen extends StatelessWidget {
   const FamilyScreen({super.key});

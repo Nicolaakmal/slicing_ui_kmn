@@ -37,17 +37,18 @@ class LogAPIListener extends StatelessWidget {
             // Go to [HomePage].
             //
             Navigator.pop(listen);
-            Navigator.push(
-              listen,
-              // MaterialPageRoute(
-              //     builder: (_) => MultiBlocProvider(providers: const [
-              //           // BlocProvider(create: (_) => UserListCubit()),
-              //           // BlocProvider(create: (_) => ResourceListCubit())
-              //         ], child: const HomeScreen())),//ubah HomePage() to HomeScreen
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
-              ),
-            );
+            // Navigator.push(
+            //   listen,
+            //   // MaterialPageRoute(
+            //   //     builder: (_) => MultiBlocProvider(providers: const [
+            //   //           // BlocProvider(create: (_) => UserListCubit()),
+            //   //           // BlocProvider(create: (_) => ResourceListCubit())
+            //   //         ], child: const HomeScreen())),//ubah HomePage() to HomeScreen
+            //   MaterialPageRoute(
+            //     builder: (context) => const HomeScreen(),
+            //   ),
+            // );
+            Navigator.pushNamed(listen, '/home');
           }
         },
         child: child,
