@@ -1,9 +1,10 @@
 // login_page.dart
 import 'package:flutter/material.dart';
-// import 'package:slicing_ui_kmn_01/email_login.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slicing_ui_kmn_01/email_login.dart';
 import 'package:slicing_ui_kmn_01/log/widget/log_page.dart';
-// import 'cubits/cubit/login_cubit.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
+import 'cubits/cubit/login_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -50,10 +51,10 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LogPage(), // Changed EmailLogin() to LogPage()
+                          builder: (context) =>
+                              const LogPage(), // Changed EmailLogin() to LogPage()
                         ),
                       );
-
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
@@ -114,3 +115,62 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+// class LoginPage extends StatefulWidget {
+//   const LoginPage({super.key});
+
+//   @override
+//   State<LoginPage> createState() => _LoginPageState();
+// }
+
+// class _LoginPageState extends State<LoginPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Container(
+//         decoration: const BoxDecoration(
+//           image: DecorationImage(
+//             image: AssetImage('assets/images/Login/login.jpg'),
+//             fit: BoxFit.cover,
+//           ),
+//         ),
+//         child: Container(
+//           child: Center(
+//             child: const Column(
+//               mainAxisAlignment: MainAxisAlignment.end,
+//               children: [
+//                 SizedBox(
+//                   width: 375,
+//                   height: 75,
+//                   child:
+//                       ElevatedButton(onPressed: () {}, child: Text("Hello1")),
+//                   // Text('Hello 1'),
+//                 ),
+//                 SizedBox(
+//                   width: 375,
+//                   height: 75,
+//                   child: Text('Hello 2'),
+//                 ),
+//                 SizedBox(
+//                   width: 375,
+//                   height: 75,
+//                   child: Text('Hello 3'),
+//                 ),
+//                 SizedBox(
+//                   height: 40,
+//                 ),
+//                 SizedBox(
+//                   width: double.maxFinite,
+//                   height: 100,
+//                   child: Card(
+//                       child: Center(
+//                           child: Text('Belum punya akun? Daftar Sekarang'))),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

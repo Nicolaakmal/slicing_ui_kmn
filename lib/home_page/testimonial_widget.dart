@@ -7,26 +7,34 @@ class TestimonialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Testimonals',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              'Testimonals',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              children: [
+                Text(
+                  "Lihat Semua",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.blue,
-              ),
-            ],
-          ),
+                Icon(
+                  Icons.keyboard_arrow_right,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
+          ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         SizedBox(
           height: 250,
           child: ListView(
@@ -47,7 +55,7 @@ class TestimonialWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset('assets/images/testimonials/3-ZDQ-RWzyo.png'),
-                      const SizedBox(height: 10), // Added for spacing
+                      const SizedBox(height: 10),
                       const Text(
                         "Ingrid Wijanarko",
                         style: TextStyle(

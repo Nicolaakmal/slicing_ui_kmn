@@ -9,7 +9,7 @@ class ActivityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Activity Screen'),
+        title: const Text('Activity Screen'),
       ),
       body: BlocProvider(
         create: (context) {
@@ -26,7 +26,7 @@ class ActivityScreen extends StatelessWidget {
         child: BlocBuilder<UserBloc, UserState>(
           builder: (context, state) {
             if (state is UserInitial) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (state is UserLoaded) {
               return ListView.builder(
                 itemCount: state.users.length,
@@ -37,7 +37,7 @@ class ActivityScreen extends StatelessWidget {
                 },
               );
             } else if (state is UserError) {
-              return Center(child: Text('Failed to load users'));
+              return const Center(child: Text('Failed to load users'));
             } else {
               return Container();
             }

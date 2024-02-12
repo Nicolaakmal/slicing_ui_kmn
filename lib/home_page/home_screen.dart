@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
   // const HomeScreen({super.key}); // before
   const HomeScreen({Key? key}) : super(key: key); //after
 
-
   @override
   Widget build(BuildContext context) {
     String selectedLanguage = 'EN';
@@ -36,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -74,7 +73,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          elevation: 0,
+          // elevation: 0,
         ),
         body: const SafeArea(
           child: Padding(
@@ -82,11 +81,11 @@ class HomeScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 10),
+                  SizedBox(height: 16),
                   OurService(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 40),
                   promotion(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 40),
                   TestimonialWidget(),
                 ],
               ),
@@ -94,7 +93,67 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         // bottomNavigationBar: const BottomNavBar(),
-        
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                // title: const Text('AlertDialog Title'),
+                content: SizedBox(
+                  height: double.infinity,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/IconFloatingActionButton/customer-support.png',
+                        width: 40,
+                        height: 40,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      const Text('Hubungi Kami'),
+                      OutlinedButton(
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(Icons.wifi_calling_3_outlined),
+                            Text("Call Center"),
+                          ],
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: Colors.black, width: 1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'Cancel'),
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
+            );
+            child:
+            const Text('Show Dialog');
+          },
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30.0))),
+          child: Image.asset(
+            'assets/images/IconFloatingActionButton/customer-support.png',
+            width: 30,
+            height: 30,
+          ),
+        ),
       ),
     );
   }

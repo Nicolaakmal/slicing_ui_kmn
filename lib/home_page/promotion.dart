@@ -18,13 +18,13 @@ class _promotionState extends State<promotion> {
         const Text(
           'Promotion',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 20),
         Container(
-          height: 160,
+          height: 165,
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),

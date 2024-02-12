@@ -18,11 +18,11 @@ class _OurServiceState extends State<OurService> {
         const Text(
           'Our Services',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
@@ -34,15 +34,18 @@ class _OurServiceState extends State<OurService> {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 28,
+                      radius: 32,
                       backgroundColor: Colors.blue,
                       child: Icon(Icons.calendar_today,
-                          size: 28, color: Colors.white),
+                          size: 32, color: Colors.white),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
-                Text('Appointment')
+                SizedBox(height: 10),
+                Text(
+                  'Appointment',
+                  style: TextStyle(fontSize: 16),
+                )
               ],
             ),
             Column(
@@ -52,18 +55,21 @@ class _OurServiceState extends State<OurService> {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 30,
+                      radius: 32,
                       backgroundColor: Colors.blue,
                       child: Image.asset(
                         'assets/images/IconServices/doctor.png',
-                        width: 30,
-                        height: 30,
+                        width: 32,
+                        height: 32,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
-                const Text('Our Doctors')
+                const SizedBox(height: 10),
+                const Text(
+                  'Our Doctors',
+                  style: TextStyle(fontSize: 16),
+                )
               ],
             ),
             Column(
@@ -73,18 +79,21 @@ class _OurServiceState extends State<OurService> {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 30,
+                      radius: 32,
                       backgroundColor: Colors.blue,
                       child: Image.asset(
                         'assets/images/IconServices/treatments.png',
-                        width: 30,
-                        height: 30,
+                        width: 32,
+                        height: 32,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
-                const Text('Treatments')
+                const SizedBox(height: 10),
+                const Text(
+                  'Treatments',
+                  style: TextStyle(fontSize: 16),
+                )
               ],
             ),
           ],

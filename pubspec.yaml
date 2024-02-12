@@ -65,6 +65,8 @@ flutter:
     - assets/images/testimonials/
     - assets/images/IconServices/
     - assets/images/Login/
+    - assets/images/IconFloatingActionButton/
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
